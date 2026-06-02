@@ -192,43 +192,76 @@
     .section-lead {
       font-size: 14px;
       color: #8a7d62;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
       line-height: 1.6;
     }
 
-    /* Google Form embed */
-    .gform-wrap {
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 3px;
-      overflow: hidden;
-      background: #fff;
-      position: relative;
-    }
-    .gform-wrap iframe {
-      width: 100%;
-      min-height: 640px;
-      border: none;
+    /* Custom form */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label {
       display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 7px;
     }
-    .gform-fallback {
-      display: none;
-      padding: 2rem;
-      text-align: center;
+    .form-input, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 2px;
+      padding: 12px 14px;
+      color: #f0e8d0;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
     }
-    .gform-fallback a {
-      display: inline-flex;
+    .form-input:focus, .form-textarea:focus {
+      border-color: #c9a84c;
+      background: rgba(201,168,76,0.06);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #4a3e28; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+
+    .submit-btn {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 24px;
       background: #c9a84c;
       color: #1a1209;
+      font-family: 'Lato', sans-serif;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      text-decoration: none;
+      border: none;
       border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.25rem;
     }
+    .submit-btn:hover { background: #dbb95a; transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { background: #7a6d40; cursor: not-allowed; transform: none; }
+
+    .err-note { font-size: 13px; color: #c0503a; margin-top: 0.6rem; min-height: 18px; }
+
+    .success-box {
+      display: none;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 3px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .success-icon { font-size: 32px; color: #c9a84c; margin-bottom: 0.75rem; }
+    .success-box p { color: #c9a84c; font-size: 16px; line-height: 1.75; }
 
     /* ── CALENDAR BUTTON ── */
     .cal-wrap { max-width: 680px; margin: 1.5rem auto 0; padding: 0 2rem; }
@@ -346,23 +379,29 @@
       <div class="section-title">Regisztráció</div>
       <p class="section-lead">Töltsd ki az alábbi űrlapot a részvételi szándékod jelzéséhez. Hamarosan visszajelzünk a részletekkel.</p>
 
-      <div class="gform-wrap">
-        <iframe
-          id="gformFrame"
-          src="https://docs.google.com/forms/d/e/1FAIpQLScICvE-p8LhtSjJKcqbdXz2xVkmWOLMUtgK25yZot_BEbDJWg/viewform?embedded=true"
-          title="Érettségi Találkozó Regisztráció"
-          allowfullscreen
-          loading="lazy"
-        >
-          Betöltés…
-        </iframe>
-        <div class="gform-fallback" id="gformFallback">
-          <p style="color:#888;margin-bottom:1rem;font-size:14px;">Az űrlap nem töltődött be. Kattints az alábbi gombra:</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScICvE-p8LhtSjJKcqbdXz2xVkmWOLMUtgK25yZot_BEbDJWg/viewform" target="_blank">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Megnyitom az űrlapot
-          </a>
+      <div id="formArea">
+        <div class="form-group">
+          <label class="form-label" for="fname">Teljes Név *</label>
+          <input class="form-input" type="text" id="fname" placeholder="pl. Kovács János" autocomplete="name">
         </div>
+        <div class="form-group">
+          <label class="form-label" for="femail">Email Cím *</label>
+          <input class="form-input" type="email" id="femail" placeholder="neved@email.hu" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fcomment">Üzenet / Komment</label>
+          <textarea class="form-textarea" id="fcomment" placeholder="Bármit üzenhetsz a szervezőknek vagy a többieknek…"></textarea>
+        </div>
+        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.43 19.79 19.79 0 01.1 5.84 2 2 0 012.11 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Jelentkezem a találkozóra
+        </button>
+        <p class="err-note" id="errNote"></p>
+      </div>
+
+      <div class="success-box" id="successBox">
+        <div class="success-icon">✓</div>
+        <p><strong>Sikeresen regisztráltál!</strong><br>Köszönjük a jelentkezésedet.<br>Hamarosan értesítünk a részletekről.</p>
       </div>
     </div>
   </div>
@@ -381,23 +420,51 @@
   <div class="footer">Városmajori Gimnázium · 1992–1996 · IV.D</div>
 
   <script>
+    /* ── Tabló image fallback ── */
     function tabloFallback(img) {
-      // Try alternative Google Drive URL formats
       var id = '1xC7K-_7kXj2HWuIWU6-PknFnoScGSonS';
       var tried = img.dataset.tried || '';
-
       if (!tried.includes('uc')) {
-        img.dataset.tried = (tried + ' uc');
+        img.dataset.tried = tried + ' uc';
         img.src = 'https://drive.google.com/uc?export=view&id=' + id;
       } else if (!tried.includes('lh3')) {
-        img.dataset.tried = (tried + ' lh3');
+        img.dataset.tried = tried + ' lh3';
         img.src = 'https://lh3.googleusercontent.com/d/' + id + '=s1600';
       } else {
-        // All fallbacks failed — show placeholder text
         var wrap = document.getElementById('tabloWrap');
-        wrap.innerHTML = '<div style="padding:3rem;text-align:center;color:#4a3e2a;">' +
-          '<p style="font-size:13px;line-height:1.7;">Az osztálytabló képe hamarosan megjelenik.</p></div>';
+        wrap.innerHTML = '<div style="padding:3rem;text-align:center;color:#4a3e2a;font-size:13px;line-height:1.7;">Az osztálytabló képe hamarosan megjelenik.</div>';
       }
+    }
+
+    /* ── Registration form → Google Forms (no-cors submit) ── */
+    var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScICvE-p8LhtSjJKcqbdXz2xVkmWOLMUtgK25yZot_BEbDJWg/formResponse';
+
+    function handleSubmit() {
+      var name    = document.getElementById('fname').value.trim();
+      var email   = document.getElementById('femail').value.trim();
+      var comment = document.getElementById('fcomment').value.trim();
+      var errNote = document.getElementById('errNote');
+      var btn     = document.getElementById('submitBtn');
+
+      if (!name)  { errNote.textContent = '* Kérjük add meg a neved.'; return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errNote.textContent = '* Kérjük adj meg érvényes email címet.'; return;
+      }
+      errNote.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Küldés…';
+
+      var body = new URLSearchParams({
+        'entry.1001208570': name,
+        'entry.1049344164': email,
+        'entry.909443557':  comment
+      });
+
+      fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body: body })
+        .finally(function() {
+          document.getElementById('formArea').style.display  = 'none';
+          document.getElementById('successBox').style.display = 'block';
+        });
     }
   </script>
 
