@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Érettségi Találkozó – Városmajor 1996</title>
+  <meta name="description" content="Városmajori Gimnázium IV.D osztályának 30 éves érettségi találkozója – 2026. szeptember 12.">
+  <meta property="og:title" content="Érettségi Találkozó – Városmajor 1996">
+  <meta property="og:description" content="30 évvel az érettségi után újra együtt! IV.D · 2026. szeptember 12.">
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/V%C3%A1rosmajori_Gimn%C3%A1zium.JPG/1280px-V%C3%A1rosmajori_Gimn%C3%A1zium.JPG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #1a1209; color: #f0e8d0; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/V%C3%A1rosmajori_Gimn%C3%A1zium.JPG/1280px-V%C3%A1rosmajori_Gimn%C3%A1zium.JPG');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.45) sepia(0.25);
+      transition: filter 0.5s;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(26,18,9,0.1) 0%, rgba(26,18,9,0.92) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2.5rem 2rem 3rem;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .year-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      border: 1px solid #c9a84c;
+      padding: 4px 12px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #f5edd8;
+      margin-bottom: 0.5rem;
+    }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: #c9a84c;
+      margin-bottom: 2rem;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: #c9a84c;
+      color: #1a1209;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .hero-cta:hover { background: #dbb95a; transform: translateY(-1px); }
+
+    /* ── TABLO ── */
+    .tablo-section {
+      position: relative;
+      background: #110d05;
+    }
+    .tablo-header {
+      text-align: center;
+      padding: 2.5rem 2rem 1.5rem;
+    }
+    .tablo-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #f5edd8;
+      margin-bottom: 0.4rem;
+    }
+    .tablo-header p {
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #c9a84c;
+    }
+    .tablo-frame {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+    }
+    .tablo-img-wrap {
+      position: relative;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 3px;
+      overflow: hidden;
+      background: #0e0a04;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tablo-img {
+      width: 100%;
+      display: block;
+      max-height: 480px;
+      object-fit: contain;
+      filter: sepia(0.15) brightness(0.92);
+    }
+    .tablo-caption {
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(201,168,76,0.5);
+      text-transform: uppercase;
+    }
+    .tablo-placeholder {
+      padding: 3rem;
+      text-align: center;
+      color: #4a3e2a;
+      font-size: 14px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider-gold { border: none; border-top: 1px solid rgba(201,168,76,0.2); }
+    .divider { border: none; border-top: 1px solid rgba(201,168,76,0.12); margin: 2rem 0; }
+
+    /* ── DETAILS ── */
+    .body-section { padding: 2.5rem 2rem; max-width: 680px; margin: 0 auto; }
+
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.75rem 0; }
+    .detail-card {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 3px;
+      padding: 1rem 1.1rem;
+    }
+    .detail-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 5px;
+    }
+    .detail-value { font-size: 15px; color: #f0e8d0; }
+    .detail-value.tbd { color: #7a6d53; font-style: italic; }
+
+    .description { font-size: 15px; line-height: 1.85; color: #c8bfa8; margin-bottom: 2rem; }
+
+    /* ── REGISTRATION SECTION ── */
+    .reg-section {
+      background: #110d05;
+      padding: 2.5rem 2rem;
+    }
+    .reg-inner { max-width: 680px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #f5edd8;
+      margin-bottom: 0.5rem;
+    }
+    .section-lead {
+      font-size: 14px;
+      color: #8a7d62;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Google Form embed */
+    .gform-wrap {
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+    }
+    .gform-wrap iframe {
+      width: 100%;
+      min-height: 640px;
+      border: none;
+      display: block;
+    }
+    .gform-fallback {
+      display: none;
+      padding: 2rem;
+      text-align: center;
+    }
+    .gform-fallback a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: #c9a84c;
+      color: #1a1209;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    /* ── CALENDAR BUTTON ── */
+    .cal-wrap { max-width: 680px; margin: 1.5rem auto 0; padding: 0 2rem; }
+    .cal-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 13px 24px;
+      background: transparent;
+      color: #c9a84c;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cal-btn:hover { border-color: #c9a84c; background: rgba(201,168,76,0.07); }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 2rem 2rem;
+      border-top: 1px solid rgba(201,168,76,0.12);
+      font-size: 11px;
+      color: #4a4030;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 520px) {
+      .details-grid { grid-template-columns: 1fr; }
+      .body-section { padding: 1.75rem 1.25rem; }
+      .reg-section { padding: 1.75rem 1.25rem; }
+      .cal-wrap { padding: 0 1.25rem; }
+      .hero-content { padding: 2rem 1.25rem 2.5rem; }
+      .gform-wrap iframe { min-height: 760px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO: iskolaépület ── -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="year-badge">Városmajori Gimnázium · IV.D</div>
+      <div class="hero-title">Érettségi Találkozó</div>
+      <div class="hero-subtitle">Class of 1996 — 30 éves találkozó</div>
+      <a class="hero-cta" href="#regisztracio">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.43 19.79 19.79 0 01.1 5.84 2 2 0 012.11 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Jelentkezem a találkozóra
+      </a>
+    </div>
+  </div>
+
+  <!-- ── TABLO: osztálykép ── -->
+  <div class="tablo-section">
+    <div class="tablo-header">
+      <h2>IV.D osztálytabló</h2>
+      <p>Városmajori Gimnázium · 1992–1996</p>
+    </div>
+    <div class="tablo-frame">
+      <div class="tablo-img-wrap" id="tabloWrap">
+        <img
+          class="tablo-img"
+          id="tabloImg"
+          src="https://drive.google.com/thumbnail?id=1xC7K-_7kXj2HWuIWU6-PknFnoScGSonS&sz=w1600"
+          alt="IV.D osztálytabló 1992–1996"
+          onerror="tabloFallback(this)"
+        >
+      </div>
+      <p class="tablo-caption">IV.D · 1992–1996 · Városmajori Gimnázium</p>
+    </div>
+  </div>
+
+  <hr class="divider-gold">
+
+  <!-- ── EVENT DETAILS ── -->
+  <div class="body-section">
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-label">Dátum</div>
+        <div class="detail-value">2026. szeptember 12.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-label">Időpont</div>
+        <div class="detail-value">18:00 – 22:00</div>
+      </div>
+      <div class="detail-card" style="grid-column: 1 / -1;">
+        <div class="detail-label">Helyszín</div>
+        <div class="detail-value tbd">Hamarosan bejelentjük</div>
+      </div>
+    </div>
+
+    <p class="description">
+      30 évvel az érettségi után újra együtt! Gyere, találkozz régi osztálytársaiddal, idézd fel a gimnáziumi éveket — és nézd meg, ki hogyan változott az elmúlt három évtized alatt.
+    </p>
+  </div>
+
+  <hr class="divider-gold">
+
+  <!-- ── REGISTRATION ── -->
+  <div class="reg-section" id="regisztracio">
+    <div class="reg-inner">
+      <div class="section-title">Regisztráció</div>
+      <p class="section-lead">Töltsd ki az alábbi űrlapot a részvételi szándékod jelzéséhez. Hamarosan visszajelzünk a részletekkel.</p>
+
+      <div class="gform-wrap">
+        <iframe
+          id="gformFrame"
+          src="https://docs.google.com/forms/d/e/1FAIpQLScICvE-p8LhtSjJKcqbdXz2xVkmWOLMUtgK25yZot_BEbDJWg/viewform?embedded=true"
+          title="Érettségi Találkozó Regisztráció"
+          allowfullscreen
+          loading="lazy"
+        >
+          Betöltés…
+        </iframe>
+        <div class="gform-fallback" id="gformFallback">
+          <p style="color:#888;margin-bottom:1rem;font-size:14px;">Az űrlap nem töltődött be. Kattints az alábbi gombra:</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScICvE-p8LhtSjJKcqbdXz2xVkmWOLMUtgK25yZot_BEbDJWg/viewform" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Megnyitom az űrlapot
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CALENDAR ── -->
+  <div class="cal-wrap">
+    <a class="cal-btn"
+       href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NTZiMnNvdGJkZHR0amMyN3IxbWw0b2E0ZmsgYW5kcmFzLmtvYnphQGVjb21tZXJjZXRyYWRlLmh1&tmsrc=andras.kobza%40ecommercetrade.hu"
+       target="_blank"
+       rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Hozzáadom a naptárhoz
+    </a>
+  </div>
+
+  <div class="footer">Városmajori Gimnázium · 1992–1996 · IV.D</div>
+
+  <script>
+    function tabloFallback(img) {
+      // Try alternative Google Drive URL formats
+      var id = '1xC7K-_7kXj2HWuIWU6-PknFnoScGSonS';
+      var tried = img.dataset.tried || '';
+
+      if (!tried.includes('uc')) {
+        img.dataset.tried = (tried + ' uc');
+        img.src = 'https://drive.google.com/uc?export=view&id=' + id;
+      } else if (!tried.includes('lh3')) {
+        img.dataset.tried = (tried + ' lh3');
+        img.src = 'https://lh3.googleusercontent.com/d/' + id + '=s1600';
+      } else {
+        // All fallbacks failed — show placeholder text
+        var wrap = document.getElementById('tabloWrap');
+        wrap.innerHTML = '<div style="padding:3rem;text-align:center;color:#4a3e2a;">' +
+          '<p style="font-size:13px;line-height:1.7;">Az osztálytabló képe hamarosan megjelenik.</p></div>';
+      }
+    }
+  </script>
+
+</body>
+</html>
