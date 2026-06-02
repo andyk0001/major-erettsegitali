@@ -390,25 +390,34 @@
       <div class="section-title">Regisztráció</div>
       <p class="section-lead">Töltsd ki az alábbi űrlapot a részvételi szándékod jelzéséhez. Hamarosan visszajelzünk a részletekkel.</p>
 
-      <div id="formArea">
+      <!-- Hidden iframe catches the Google Forms redirect so the user stays on our page -->
+      <iframe name="gform-sink" style="display:none;" aria-hidden="true"></iframe>
+
+      <form
+        id="formArea"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScICvE-p8LhtSjJKcqbdXz2xVkmWOLMUtgK25yZot_BEbDJWg/formResponse"
+        method="POST"
+        target="gform-sink"
+        onsubmit="handleSubmit(event)"
+      >
         <div class="form-group">
           <label class="form-label" for="fname">Teljes Név *</label>
-          <input class="form-input" type="text" id="fname" placeholder="pl. Kovács János" autocomplete="name">
+          <input class="form-input" type="text" id="fname" name="entry.1001208570" placeholder="pl. Kovács János" autocomplete="name">
         </div>
         <div class="form-group">
           <label class="form-label" for="femail">Email Cím *</label>
-          <input class="form-input" type="email" id="femail" placeholder="neved@email.hu" autocomplete="email">
+          <input class="form-input" type="email" id="femail" name="entry.1049344164" placeholder="neved@email.hu" autocomplete="email">
         </div>
         <div class="form-group">
           <label class="form-label" for="fcomment">Üzenet / Komment</label>
-          <textarea class="form-textarea" id="fcomment" placeholder="Bármit üzenhetsz a szervezőknek vagy a többieknek…"></textarea>
+          <textarea class="form-textarea" id="fcomment" name="entry.909443557" placeholder="Bármit üzenhetsz a szervezőknek vagy a többieknek…"></textarea>
         </div>
-        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+        <button class="submit-btn" id="submitBtn" type="submit">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.43 19.79 19.79 0 01.1 5.84 2 2 0 012.11 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           Jelentkezem a találkozóra
         </button>
         <p class="err-note" id="errNote"></p>
-      </div>
+      </form>
 
       <div class="success-box" id="successBox">
         <div class="success-icon">✓</div>
@@ -447,35 +456,32 @@
       }
     }
 
-    /* ── Registration form → Google Forms (no-cors submit) ── */
-    var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScICvE-p8LhtSjJKcqbdXz2xVkmWOLMUtgK25yZot_BEbDJWg/formResponse';
-
-    function handleSubmit() {
+    /* ── Registration form → Google Forms via hidden iframe target ── */
+    function handleSubmit(e) {
       var name    = document.getElementById('fname').value.trim();
       var email   = document.getElementById('femail').value.trim();
-      var comment = document.getElementById('fcomment').value.trim();
       var errNote = document.getElementById('errNote');
       var btn     = document.getElementById('submitBtn');
 
-      if (!name)  { errNote.textContent = '* Kérjük add meg a neved.'; return; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errNote.textContent = '* Kérjük adj meg érvényes email címet.'; return;
+      if (!name) {
+        e.preventDefault();
+        errNote.textContent = '* Kérjük add meg a neved.';
+        return;
       }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault();
+        errNote.textContent = '* Kérjük adj meg érvényes email címet.';
+        return;
+      }
+
       errNote.textContent = '';
       btn.disabled = true;
-      btn.textContent = 'Küldés…';
 
-      var body = new URLSearchParams({
-        'entry.1001208570': name,
-        'entry.1049344164': email,
-        'entry.909443557':  comment
-      });
-
-      fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body: body })
-        .finally(function() {
-          document.getElementById('formArea').style.display  = 'none';
-          document.getElementById('successBox').style.display = 'block';
-        });
+      // Show success after the form submits to the hidden iframe
+      setTimeout(function() {
+        document.getElementById('formArea').style.display  = 'none';
+        document.getElementById('successBox').style.display = 'block';
+      }, 800);
     }
   </script>
 
