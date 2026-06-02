@@ -13,7 +13,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Lato', sans-serif; background: #1a1209; color: #f0e8d0; }
+    body { font-family: 'Lato', sans-serif; background: #1a1209; color: #f5edd8; font-size: 16px; }
 
     /* ── HERO ── */
     .hero {
@@ -105,10 +105,10 @@
       margin-bottom: 0.4rem;
     }
     .tablo-header p {
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #c9a84c;
+      color: #dbb95a;
     }
     .tablo-frame {
       position: relative;
@@ -137,9 +137,9 @@
     .tablo-caption {
       text-align: center;
       margin-top: 0.75rem;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 2px;
-      color: rgba(201,168,76,0.5);
+      color: rgba(201,168,76,0.75);
       text-transform: uppercase;
     }
     .tablo-placeholder {
@@ -164,17 +164,17 @@
       padding: 1rem 1.1rem;
     }
     .detail-label {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #c9a84c;
-      margin-bottom: 5px;
+      color: #dbb95a;
+      margin-bottom: 6px;
     }
-    .detail-value { font-size: 15px; color: #f0e8d0; }
-    .detail-value.tbd { color: #7a6d53; font-style: italic; }
+    .detail-value { font-size: 16px; color: #f5edd8; }
+    .detail-value.tbd { color: #a89d80; font-style: italic; }
 
-    .description { font-size: 15px; line-height: 1.85; color: #c8bfa8; margin-bottom: 2rem; }
+    .description { font-size: 16px; line-height: 1.9; color: #e8dfc8; margin-bottom: 2rem; }
 
     /* ── REGISTRATION SECTION ── */
     .reg-section {
@@ -190,40 +190,40 @@
       margin-bottom: 0.5rem;
     }
     .section-lead {
-      font-size: 14px;
-      color: #8a7d62;
+      font-size: 15px;
+      color: #c8bfa8;
       margin-bottom: 1.75rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* Custom form */
     .form-group { margin-bottom: 1.1rem; }
     .form-label {
       display: block;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #c9a84c;
-      margin-bottom: 7px;
+      color: #dbb95a;
+      margin-bottom: 8px;
     }
     .form-input, .form-textarea {
       width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(201,168,76,0.25);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.3);
       border-radius: 2px;
-      padding: 12px 14px;
-      color: #f0e8d0;
+      padding: 13px 14px;
+      color: #f5edd8;
       font-family: 'Lato', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       outline: none;
       transition: border-color 0.2s, background 0.2s;
     }
     .form-input:focus, .form-textarea:focus {
       border-color: #c9a84c;
-      background: rgba(201,168,76,0.06);
+      background: rgba(201,168,76,0.07);
     }
-    .form-input::placeholder, .form-textarea::placeholder { color: #4a3e28; }
+    .form-input::placeholder, .form-textarea::placeholder { color: #6a5e48; }
     .form-textarea { resize: vertical; min-height: 110px; }
 
     .submit-btn {
@@ -232,11 +232,11 @@
       justify-content: center;
       gap: 10px;
       width: 100%;
-      padding: 15px 24px;
+      padding: 17px 24px;
       background: #c9a84c;
       color: #1a1209;
       font-family: 'Lato', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -244,7 +244,7 @@
       border-radius: 2px;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
-      margin-top: 0.25rem;
+      margin-top: 0.5rem;
     }
     .submit-btn:hover { background: #dbb95a; transform: translateY(-1px); }
     .submit-btn:active { transform: translateY(0); }
@@ -261,7 +261,7 @@
       text-align: center;
     }
     .success-icon { font-size: 32px; color: #c9a84c; margin-bottom: 0.75rem; }
-    .success-box p { color: #c9a84c; font-size: 16px; line-height: 1.75; }
+    .success-box p { color: #dbb95a; font-size: 17px; line-height: 1.8; }
 
     /* ── CALENDAR BUTTON ── */
     .cal-wrap { max-width: 680px; margin: 1.5rem auto 0; padding: 0 2rem; }
@@ -271,11 +271,11 @@
       justify-content: center;
       gap: 10px;
       width: 100%;
-      padding: 13px 24px;
+      padding: 15px 24px;
       background: transparent;
-      color: #c9a84c;
+      color: #dbb95a;
       font-family: 'Lato', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -291,9 +291,9 @@
     .footer {
       text-align: center;
       padding: 2rem 2rem;
-      border-top: 1px solid rgba(201,168,76,0.12);
-      font-size: 11px;
-      color: #4a4030;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      font-size: 12px;
+      color: #7a6d53;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-top: 2rem;
@@ -302,11 +302,22 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 520px) {
       .details-grid { grid-template-columns: 1fr; }
-      .body-section { padding: 1.75rem 1.25rem; }
-      .reg-section { padding: 1.75rem 1.25rem; }
+      .body-section { padding: 2rem 1.25rem; }
+      .reg-section { padding: 2rem 1.25rem; }
       .cal-wrap { padding: 0 1.25rem; }
-      .hero-content { padding: 2rem 1.25rem 2.5rem; }
-      .gform-wrap iframe { min-height: 760px; }
+      .hero-content { padding: 2rem 1.25rem 2.75rem; }
+      .hero-subtitle { font-size: 18px; }
+      .tablo-header { padding: 2rem 1.25rem 1.25rem; }
+      .tablo-header h2 { font-size: 22px; }
+      .tablo-frame { padding: 0 0.75rem 1.75rem; }
+      .description { font-size: 16px; }
+      .detail-value { font-size: 16px; }
+      .section-title { font-size: 22px; }
+      .section-lead { font-size: 15px; }
+      .form-input, .form-textarea { font-size: 16px; padding: 14px; }
+      .submit-btn { font-size: 14px; padding: 18px 20px; }
+      .cal-btn { font-size: 13px; padding: 16px 20px; }
+      .footer { font-size: 11px; }
     }
   </style>
 </head>
