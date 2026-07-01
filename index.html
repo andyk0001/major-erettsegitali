@@ -149,6 +149,29 @@
       font-size: 14px;
     }
 
+    /* ── GALLERY BUTTON ── */
+    .gallery-wrap { max-width: 900px; margin: 0 auto; padding: 0 1rem 2.5rem; text-align: center; }
+    .gallery-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 420px;
+      padding: 18px 28px;
+      background: #c9a84c;
+      color: #1a1209;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .gallery-btn:hover { background: #dbb95a; transform: translateY(-1px); }
+
     /* ── DIVIDER ── */
     .divider-gold { border: none; border-top: 1px solid rgba(201,168,76,0.2); }
     .divider { border: none; border-top: 1px solid rgba(201,168,76,0.12); margin: 2rem 0; }
@@ -239,6 +262,8 @@
       .body-section { padding: 2rem 1.25rem; }
       .reg-section { padding: 2rem 1.25rem; }
       .cal-wrap { padding: 0 1.25rem; }
+      .gallery-wrap { padding: 0 1.25rem 2rem; }
+      .gallery-btn { font-size: 14px; padding: 16px 20px; }
       .hero-content { padding: 2rem 1.25rem 2.75rem; }
       .hero-subtitle { font-size: 18px; }
       .tablo-header { padding: 2rem 1.25rem 1.25rem; }
@@ -302,6 +327,16 @@
         </a>
       </div>
     </div>
+  </div>
+
+  <div class="gallery-wrap">
+    <a class="gallery-btn"
+       href="https://photos.google.com/share/AF1QipNLQd8sP1j_uOnjD5XWu3wKB29Sf9jpoEoqjZtO-ryyaVt_AHV_PHeruXdATOlD4g?pli=1&key=RlFfRy1VR1RvR2RRYmM3ekJJNFc5UW41Sjlaekd3"
+       target="_blank"
+       rel="noopener">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Képgaléria
+    </a>
   </div>
 
   <hr class="divider-gold">
